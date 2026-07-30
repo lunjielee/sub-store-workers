@@ -184,7 +184,8 @@ jobs:
           sed -i "s/__KV_ID__/${{ secrets.KV_NAMESPACE_ID }}/" wrangler.toml
           echo "Generated wrangler.toml:"
           cat wrangler.toml
-
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Deploy Workers
         if: steps.check.outputs.needed == 'true'
         working-directory: sub-store-workers
